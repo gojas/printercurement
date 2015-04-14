@@ -24,15 +24,7 @@ class CatalogsController extends Controller
         $jsonRenderer = new Json();
 
         $jsonRenderer->assign('catalogs', $catalogs);
-        $jsonRenderer->render();
-
-/*
-        $jsonResponse = array();
-        foreach($catalogs as $catalog){
-            $jsonResponse[] = $this->getSerializer()->serialize($catalog, 'json');
-        }
-
-        return new JsonResponse(array('catalogs' => $jsonResponse));
-*/
+        
+        return $jsonRenderer->render();
     }
 }

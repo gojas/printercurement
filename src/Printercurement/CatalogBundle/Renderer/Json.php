@@ -13,7 +13,7 @@ class Json extends AbstractRenderer
 
     public function assign($key, $value)
     {
-        $this->content[$key] = $value;
+        $this->response[$key] = $value;
 
         return $this;
     }
