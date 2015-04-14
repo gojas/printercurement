@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogs!{% endblock %}
+
+{% block body %}
+<h1>Catalogs</h1>
+
+{% for catalog in catalogs %}
+    <a href="/catalogs/{{catalog.id}}/{{catalog.getUrlName()}}">{{catalog.name}}</a>
+    <br />
+{% endfor %}
+
+
+{% endblock %}

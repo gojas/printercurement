@@ -1,0 +1,17 @@
+catalogs:
+    path:     /
+    defaults: { _controller: CatalogBundle:Catalogs:index }
+    requirements: { _format: json }
+
+catalog_index:
+    path:     /{id}/{urlName}
+    defaults: { _controller: CatalogBundle:Catalog:index }
+
+catalog_create:
+    path: /create
+    defaults: { _controller: CatalogBundle:Catalog:create }
+
+catalog_do_create:
+    path: /do_create
+    defaults: { _controller: CatalogBundle:Catalog:doCreate }
+    requirements: { _method: post }
