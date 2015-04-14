@@ -2,6 +2,7 @@
 
 namespace Printercurement\CatalogBundle\Controller;
 
+use Printercurement\CatalogBundle\Renderer\Json;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class CatalogsController extends Controller
@@ -20,11 +21,18 @@ class CatalogsController extends Controller
         $em = $this->getDoctrine()->getManager();
         $catalogs = $em->getRepository('CatalogBundle:Catalog')->findAll();
 
+        $jsonRenderer = new Json();
+
+        $jsonRenderer->assign('catalogs', $catalogs);
+        $jsonRenderer->render();
+
+/*
         $jsonResponse = array();
         foreach($catalogs as $catalog){
             $jsonResponse[] = $this->getSerializer()->serialize($catalog, 'json');
         }
 
         return new JsonResponse(array('catalogs' => $jsonResponse));
+*/
     }
 }
