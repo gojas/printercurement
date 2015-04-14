@@ -1,6 +1,6 @@
 <?php
 
-namespace Printercurement\CatalogBundle\Renderer;
+namespace Printercurement\CoreBundle\Renderer;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -28,7 +28,7 @@ class Json extends AbstractRenderer
         foreach($this->response as $key => $value){
             if(is_array($value)){
                 foreach($value as $subKey => $subValue){
-                    $this->response[$subKey] = $this->getSerializer()->serialize($subValue, 'json');
+                    $this->response[$key][$subKey] = $this->getSerializer()->serialize($subValue, 'json');
                 }
             }else{
                 $this->response[$key] = $this->getSerializer()->serialize($value, 'json');

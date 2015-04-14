@@ -11,6 +11,7 @@
 
 namespace Symfony\Bundle\FrameworkBundle\Controller;
 
+use Printercurement\CoreBundle\CoreBundle;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -26,11 +27,6 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Doctrine\Bundle\DoctrineBundle\Registry;
-
-use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\Encoder\XmlEncoder;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
 /**
  * Controller is a simple implementation of a Controller.
@@ -366,15 +362,23 @@ class Controller extends ContainerAware
     }
 
     /**
-     * Return serializer used for entity serialization
+     * Return renderer used for returning response
      *
-     * @return Serializer
+     * @return Renderer
      */
-    public function getSerializer()
+    public function getRenderer($type = 'json')
     {
-        $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new GetSetMethodNormalizer());
+        switch ($type) {
+            case 'json':
+                $renderer = new \Printercurement\CoreBundle\Renderer\Json();
+        break;
+            case 'xml':
+                $renderer = new \Printercurement\CoreBundle\Renderer\Xml();
+        break;
+            default:
+                $renderer = new \Printercurement\CoreBundle\Renderer\Json();
+        }
 
-        return new Serializer($normalizers, $encoders);
+        return $renderer;
     }
 }

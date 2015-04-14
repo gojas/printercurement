@@ -1,6 +1,6 @@
 <?php
 
-namespace Printercurement\CatalogBundle\Renderer;
+namespace Printercurement\CoreBundle\Renderer;
 
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
