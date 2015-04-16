@@ -24,4 +24,9 @@ class CatalogsController extends Controller
             ->assign('catalogs', $catalogs)
             ->render();
     }
+
+    public function catalogsAction()
+    {
+        return $this->render('CatalogBundle:Catalogs:public/catalogs_grid.html.twig');
+    }
 }

@@ -15,3 +15,7 @@ catalog_do_create:
     path: /do_create
     defaults: { _controller: CatalogBundle:Catalog:doCreate }
     requirements: { _method: post }
+
+catalog_catalogs:
+    path: /show
+    defaults: { _controller: CatalogBundle:Catalogs:catalogs }

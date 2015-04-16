@@ -2,13 +2,79 @@
 
 {% block title %}Catalogs!{% endblock %}
 
+{% block bodystart %} <body ng-app="catalog"> {% endblock %}
+
 {% block body %}
-<h1>Catalogs</h1>
 
-{% for catalog in catalogs %}
-    <a href="/catalogs/{{catalog.id}}/{{catalog.getUrlName()}}">{{catalog.name}}</a>
-    <br />
-{% endfor %}
+<div ng-controller="Main">
 
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Catalogs</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#show"><i class="fa fa-home"></i> Catalogs</a></li>
+                <li><a href="#create"><i class="fa fa-home"></i>Create new catalog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div ng-view></div>
+
+</div>
 
 {% endblock %}
+
+{% block javascripts %}
+    {# note:we are just extending javascript block here#}
+    {{ parent() }}
+
+    <script>
+        var app = angular.module('catalog', ['ngRoute']);
+        app.config(function($interpolateProvider, $routeProvider) {
+            $interpolateProvider.startSymbol('{$');
+            $interpolateProvider.endSymbol('$}');
+
+            $routeProvider
+                  .when('/show', {
+                      templateUrl : '/catalogs/show',
+                      controller  : 'Catalogs'
+                  })
+                  .when('/:id/:url', {
+                      templateUrl : function(params){ return '/catalogs/'+params.id+'/'+params.url+''},
+                      controller  : 'Catalog'
+                  })
+                  .when('/create', {
+                      templateUrl : '/catalogs/create',
+                      controller  : 'Catalog'
+                  })
+                  .otherwise('/show')
+        });
+
+        app.controller('Main', function Main($scope) {
+            var main = this;
+
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        });
+
+        app.controller('Catalogs', function Catalogs($scope) {
+            var catalogs = this;
+
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        });
+
+        app.controller('Catalog', function Catalog($scope) {
+            var catalog = this;
+
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+        });
+    </script>
+
+{% endblock %}
+
+{% block bodyend %}{% endblock %}

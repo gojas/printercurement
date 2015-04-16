@@ -13,12 +13,12 @@ class CatalogController extends Controller
 
         $catalog = $em->getRepository('CatalogBundle:Catalog')->find($id);
 
-        return $this->render('CatalogBundle:Catalog:catalog.html.twig', array('catalog' => $catalog));
+        return $this->render('CatalogBundle:Catalog:public/catalog.html.twig', array('catalog' => $catalog));
     }
 
     public function createAction()
     {
-        return $this->render('CatalogBundle:Catalog:create.html.twig');
+        return $this->render('CatalogBundle:Catalog:public/create.html.twig');
     }
 
     public function doCreateAction(Request $request)
