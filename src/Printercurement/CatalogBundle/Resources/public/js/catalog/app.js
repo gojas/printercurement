@@ -1,4 +1,4 @@
-var app = angular.module('catalog', ['ngRoute']);
+var app = angular.module('catalog', ['ngRoute', 'ui.bootstrap']);
 app.config(function($interpolateProvider, $routeProvider) {
     $interpolateProvider.startSymbol('{$');
     $interpolateProvider.endSymbol('$}');

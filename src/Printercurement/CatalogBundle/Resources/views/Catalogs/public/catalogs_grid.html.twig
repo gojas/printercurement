@@ -1,6 +1,17 @@
-NAME FROM ANGULAR CONTROLLER!!! {$ firstName $} <br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number of articles</th>
+            <th>Created</th>
+        </tr>
+    </thead>
 
-
-<ul class="nav navbar-nav navbar-left">
-    <li><a href="#1/first-catalog-yey"><i class="fa fa-shield"></i> First catalog YEY</a></li>
-</ul>
+    <tbody ng-repeat="catalog in catalogs">
+        <tr>
+            <td><a href="#{$ catalog.id $}/{$ catalog.urlName $}"><i class="fa fa-shield"></i>{$ catalog.name $}</a></td>
+            <td>{$ catalog.name $}</td>
+            <td>{$ catalog.dtCreated.timestamp * 1000 | date:'yyyy-MM-dd' $}</td>
+        </tr>
+    </tbody>
+</table>

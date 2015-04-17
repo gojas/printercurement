@@ -28,10 +28,10 @@ class Json extends AbstractRenderer
         foreach($this->response as $key => $value){
             if(is_array($value)){
                 foreach($value as $subKey => $subValue){
-                    $this->response[$key][$subKey] = $this->getSerializer()->serialize($subValue, 'json');
+                    $this->response[$key][$subKey] = $this->getSerializer()->normalize($subValue, 'json');
                 }
             }else{
-                $this->response[$key] = $this->getSerializer()->serialize($value, 'json');
+                $this->response[$key] = $this->getSerializer()->normalize($value, 'json');
             }
         }
 

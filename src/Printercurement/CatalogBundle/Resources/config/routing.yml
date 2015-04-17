@@ -1,6 +1,10 @@
 catalogs:
     path:     /
     defaults: { _controller: CatalogBundle:Catalogs:index }
+
+get_catalogs:
+    path:     /get_catalogs
+    defaults: { _controller: CatalogBundle:Catalogs:getCatalogs }
     requirements: { _format: json }
 
 catalog_index:

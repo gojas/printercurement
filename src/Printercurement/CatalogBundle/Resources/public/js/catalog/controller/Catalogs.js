@@ -1,6 +1,13 @@
-app.controller('Catalogs', function Catalogs($scope) {
+app.controller('Catalogs', function Catalogs($scope, $http) {
     var catalogs = this;
 
-    $scope.firstName = "John";
-    $scope.lastName = "Doe";
+    $scope.catalogs = [];
+
+    $http.get('/catalogs/get_catalogs').
+    success(function(data, status, headers, config) {
+        $scope.catalogs = data.catalogs;
+    }).
+    error(function(data, status, headers, config) {
+        // log error
+    });
 });
