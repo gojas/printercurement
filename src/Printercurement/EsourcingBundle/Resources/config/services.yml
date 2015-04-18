@@ -1,0 +1,4 @@
+services:
+#    esourcing.example:
+#        class: Printercurement\EsourcingBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

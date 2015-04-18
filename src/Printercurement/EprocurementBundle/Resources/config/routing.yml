@@ -1,0 +1,20 @@
+eprocurement_homepage:
+    path: /eprocurement
+    defaults: { _controller: EprocurementBundle:Index:index }
+
+eprocurement_catalogs:
+    path: /eprocurement/catalogs
+    defaults: { _controller: EprocurementBundle:Catalog:index }
+
+eprocurement_catalogs_get:
+    path: /eprocurement/catalogs/get
+    defaults: { _controller: EprocurementBundle:Catalog:getCatalogs }
+    requirements: { _format: json }
+
+eprocurement_catalog:
+    path: /eprocurement/catalog/{id}/{urlName}
+    defaults: { _controller: EprocurementBundle:Catalog:getCatalog }
+
+eprocurement_catalog_create:
+    path: /eprocurement/catalog/create
+    defaults: { _controller: EprocurementBundle:Catalog:create }

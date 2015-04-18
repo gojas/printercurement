@@ -1,0 +1,3 @@
+esourcing_homepage:
+    path:     /esourcing
+    defaults: { _controller: EsourcingBundle:Index:index }

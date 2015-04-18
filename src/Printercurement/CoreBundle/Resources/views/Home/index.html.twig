@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home!{% endblock %}
+
+{% block bodystart %} <body ng-app="index"> {% endblock %}
+
+{% block body %}
+
+    <div id="wrapper" ng-controller="Main">
+        <div class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#eprocurement"><i class="fa fa-home"></i>Eprocurement</a></li>
+                <li><a href="#esourcing"><i class="fa fa-home"></i>Esourcing</a></li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 navbar navbar-default">
+                {# tree view #}
+
+            </div>
+            <div class="col-md-10">
+                <div ng-view></div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {# note:we are just extending javascript block here#}
+    {{ parent() }}
+
+
+    {# include js files, asset is g-r-e-a-t #}
+    {% javascripts
+        '@CoreBundle/Resources/public/js/index/*'
+        '@CoreBundle/Resources/public/js/index/controller/*'
+        '@CoreBundle/Resources/public/js/index/directive/*'
+        '@CoreBundle/Resources/public/js/index/controller/eprocurement/*'
+        '@CoreBundle/Resources/public/js/index/controller/esourcing/*'
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
+{% endblock %}
+
+{% block bodyend %}{% endblock %}
