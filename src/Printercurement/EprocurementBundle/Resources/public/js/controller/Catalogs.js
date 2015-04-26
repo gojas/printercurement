@@ -1,4 +1,4 @@
-indexApp.controller('Catalogs', function Catalogs($scope, $http) {
+eprocurementApp.controller('Catalogs', function Catalogs($scope, $http) {
     var catalogs = this;
 
     $scope.catalogs = [];

@@ -1,4 +1,4 @@
-indexApp.service('Cart', function Cart($http) {
+eprocurementApp.service('Cart', function Cart($http) {
     var cart = this;
 
     return {

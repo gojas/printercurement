@@ -1,4 +1,4 @@
-indexApp.service('Highchart', function Highchart($http) {
+eprocurementApp.service('Highchart', function Highchart($http) {
     var Highchart = this;
 
     return {

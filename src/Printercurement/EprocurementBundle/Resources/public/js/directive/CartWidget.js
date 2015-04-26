@@ -1,4 +1,4 @@
-indexApp.directive('cartWidget', function ($compile){
+eprocurementApp.directive('cartWidget', function ($compile){
 
     var createCartTemplate = function(items){
 

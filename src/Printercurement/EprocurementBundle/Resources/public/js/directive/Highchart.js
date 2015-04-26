@@ -1,4 +1,4 @@
-indexApp.directive('highchart', function (){
+eprocurementApp.directive('highchart', function (){
     return {
         restrict: 'A',
         scope: {
