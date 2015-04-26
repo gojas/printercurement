@@ -17,4 +17,11 @@ indexApp.controller('EprocurementMain', function EprocurementMain($scope) {
         {name: 'bla bla2', catalogUrl: 'bl-aaa', articleUrl: 'bla-bla2', price: 12.5, currency: 'EUR'}
     ];
 
+    $scope.setRandomChartData = function(){
+        $scope.highchartData = [
+            ['bla', 3],
+            ['bla2', 12]
+        ];
+    }
+
 });
