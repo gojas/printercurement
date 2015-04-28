@@ -10,13 +10,22 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="#eprocurement"><i class="fa fa-home"></i>Eprocurement</a></li>
                 <li><a href="#esourcing"><i class="fa fa-home"></i>Esourcing</a></li>
+                {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
+                    <li><a href="{{ url('logout') }}"><i class="fa fa-home"></i>Logout</a></li>
+                {% else %}
+                    <li><a href="#login"><i class="fa fa-home"></i>Login</a></li>
+                {% endif %}
             </ul>
         </div>
 
         <div class="row">
             <div class="col-md-2 navbar navbar-default">
                 {# tree view #}
-
+                <div class="navbar-brand">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <p>Logged in as: <span style="color:red">{{ app.user.username }}</span></p>
+                    {% endif %}
+                </div>
             </div>
             <div class="col-md-10">
                 <div ng-view></div>

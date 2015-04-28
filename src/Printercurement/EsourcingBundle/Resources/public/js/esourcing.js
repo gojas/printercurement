@@ -7,5 +7,5 @@ esourcingApp.config(function($interpolateProvider, $routeProvider) {
             templateUrl : '/esourcing',
             controller  : 'EsourcingMain'
         })
-        .otherwise('/esourcing')
+        .otherwise('')
 });

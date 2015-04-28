@@ -7,5 +7,9 @@ indexApp.config(function($interpolateProvider, $routeProvider) {
             templateUrl : '/esourcing',
             controller  : 'EsourcingMain'
         })
+        .when('/login', {
+            templateUrl : '/login',
+            controller  : 'Login'
+        })
         .otherwise('/')
 });
