@@ -1,4 +1,4 @@
-indexApp.controller('Login', function Login($scope) {
+indexApp.controller('Login', function Login($scope, $route) {
     var login = this;
 
     $scope.firstName = "John";

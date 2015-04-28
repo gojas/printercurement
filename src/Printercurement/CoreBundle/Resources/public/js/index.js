@@ -3,10 +3,6 @@ indexApp.config(function($interpolateProvider, $routeProvider) {
     $interpolateProvider.endSymbol('$}');
 
     $routeProvider
-        .when('/esourcing', {
-            templateUrl : '/esourcing',
-            controller  : 'EsourcingMain'
-        })
         .when('/login', {
             templateUrl : '/login',
             controller  : 'Login'
