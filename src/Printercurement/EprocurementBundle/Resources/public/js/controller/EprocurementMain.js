@@ -7,8 +7,9 @@ eprocurementApp.controller('EprocurementMain', ['$scope', 'Cart', 'Highchart', f
     //keep data persistent over routes, use service!
     $scope.highchartData = Highchart.getData();
 
-    //will be taken from factory
-    $scope.cartData = Cart.getData();
+    $scope.loadCartData = function(){
+        return Cart.getData();
+    }
 
     $scope.setRandomChartData = function(){
         data = [

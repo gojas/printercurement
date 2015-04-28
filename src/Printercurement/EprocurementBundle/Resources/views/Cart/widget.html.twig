@@ -1,0 +1,11 @@
+<div>CART</div>
+
+<div ng-show="showItems()">
+    <div ng-repeat="item in items">
+        {$ item.name $}
+    </div>
+</div>
+
+<div ng-show="showEmpty()">
+    No items
+</div>

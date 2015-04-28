@@ -18,3 +18,7 @@ eprocurement_catalog:
 eprocurement_catalog_create:
     path: /eprocurement/catalog/create
     defaults: { _controller: EprocurementBundle:Catalog:create }
+
+eprocurement_cart_widget:
+    path: /eprocurement/cart/widget
+    defaults: { _controller: EprocurementBundle:Cart:widget }

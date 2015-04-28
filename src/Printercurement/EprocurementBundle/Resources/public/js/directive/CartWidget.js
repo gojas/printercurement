@@ -1,56 +1,39 @@
-eprocurementApp.directive('cartWidget', function ($compile){
-
-    var createCartTemplate = function(items){
-
-        template = '<div class="cart-widget-items">';
-        angular.forEach(items, function(item) {
-            template +=
-            '<div>' +
-                '<a href="/eprocurement/'+item.catalogUrl+'/'+item.articleUrl+'">'+item.name+'</a>' +
-            '</div>';
-        });
-
-        template += '</div>';
-
-        return template;
-    };
+eprocurementApp.directive('cartWidget', function (){
 
     return {
         restrict: 'A',
-        scope: {
-            items: '='
-        },
-        controller: function ($scope, $element, $attrs) {
-            //
-        },
-        template: 'Cart - hover over me (da prostis)',
-        link: function (scope, element) {
+        scope: true,
+        templateUrl: '/eprocurement/cart/widget',
+        link: function (scope, element, attrs) {
+            scope.itemsLoaded = false;
 
-            cartItems = scope.items;
+            element.on('mouseenter', function(){
+                //take data from controller here...
+                scope.items = scope.$apply(attrs.items);
 
-            element.bind('mouseenter', function() {
-                element.html(createCartTemplate(cartItems)).show();
+                scope.itemsLoaded = true;
 
-                /**
-                 * do not move out of this listener
-                 *
-                 * let AngularJs knows that there are some changes on the scope
-                */
+                scope.showItems = function(){
+                    if(scope.items.length > 0 && scope.itemsLoaded){
+                        return true;
+                    }
+                }
+
+                scope.showEmpty = function(){
+                    if(scope.items.length == 0 && scope.itemsLoaded){
+                        return true;
+                    }
+                }
+
                 scope.$apply();
-            });
+            })
 
-            element.bind('mouseleave', function() {
-                element.html('Cart - hover over me (da prostis)').show();
+            element.on('mouseleave', function(){
+                scope.itemsLoaded = false;
 
-                /**
-                 * do not move out of this listener
-                 *
-                 * let AngularJs knows that there are some changes on the scope
-                 */
                 scope.$apply();
-            });
-
-            $compile(element.contents())(scope);
+            })
         }
     }
+
 });
