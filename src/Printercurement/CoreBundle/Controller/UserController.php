@@ -187,6 +187,7 @@ class UserController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -202,7 +203,10 @@ class UserController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('user'));
+        // this hardcode is not the best solution, just temporary
+        $url = '/#' . $this->generateUrl('user');
+
+        return $this->redirect($url);
     }
 
     /**

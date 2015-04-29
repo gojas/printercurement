@@ -1,0 +1,7 @@
+core_user:
+    resource: "@CoreBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+admin:
+    path:     /
+    defaults: { _controller: CoreBundle:Admin:index }
