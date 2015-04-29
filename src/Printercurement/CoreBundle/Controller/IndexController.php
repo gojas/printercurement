@@ -10,4 +10,9 @@ class IndexController extends Controller
     {
         return $this->render('CoreBundle:Home:index.html.twig');
     }
+
+    public function homeAction()
+    {
+        return $this->render('CoreBundle:Home:home.html.twig');
+    }
 }

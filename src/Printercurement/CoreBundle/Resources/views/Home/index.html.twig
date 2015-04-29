@@ -8,19 +8,23 @@
 
         <div class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#eprocurement"><i class="fa fa-home"></i>Eprocurement</a></li>
-                <li><a href="#esourcing"><i class="fa fa-home"></i>Esourcing</a></li>
+                <li role="presentation" class="active"><a href="#home"><i class="glyphicon glyphicon-home"></i></a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="#admin"><i class="fa fa-home"></i>Administration</a></li>
+                {% endif %}
+                <li role="presentation"><a href="#eprocurement"><i class="fa fa-home"></i>Eprocurement</a></li>
+                <li role="presentation"><a href="#esourcing"><i class="fa fa-home"></i>Esourcing</a></li>
                 {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
-                    <li><a href="{{ url('logout') }}"><i class="fa fa-home"></i>Logout</a></li>
+                    <li role="presentation"><a href="{{ url('logout') }}"><i class="fa fa-home"></i>Logout</a></li>
                 {% else %}
-                    <li><a href="#login"><i class="fa fa-home"></i>Login</a></li>
+                    <li role="presentation"><a href="#login"><i class="fa fa-home"></i>Login</a></li>
                 {% endif %}
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a href="#user/{{ app.user.username }}">{{ app.user.username }}</a>
+                        <a href="#user/{{ app.user.username }}/show">{{ app.user.username }}</a>
                     {% endif %}
                 </li>
             </ul>
@@ -29,7 +33,6 @@
         <div class="row">
             <div class="col-md-2 navbar navbar-default">
                 {# tree view #}
-
             </div>
             <div class="col-md-10">
                 <div ng-view></div>

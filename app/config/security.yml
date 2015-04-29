@@ -20,14 +20,15 @@ security:
             form_login:
                 login_path: /login
                 check_path: /login_check
-                default_target_path: /
+                default_target_path: /#/home
             logout:
                 path: /logout
-                target: /
+                target: /#/login
             security: true
             anonymous: true
     access_control:
         - { path: /login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: /user, roles: ROLE_ADMIN }
+        - { path: /admin, roles: ROLE_ADMIN }
         - { path: /eprocurement/catalog/create, roles: ROLE_USER }
         - { path: /.*, roles: IS_AUTHENTICATED_ANONYMOUSLY }
