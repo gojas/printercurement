@@ -7,7 +7,7 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer;
 
-abstract class AbstractRenderer
+abstract class AbstractRenderer implements RendererInterface
 {
     /**
      * Return serializer used for entity serialization

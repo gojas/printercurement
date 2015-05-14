@@ -4,7 +4,7 @@ namespace Printercurement\CoreBundle\Renderer;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class Json extends AbstractRenderer
+class Json extends AbstractRenderer implements RendererInterface
 {
     /**
      * @var array
