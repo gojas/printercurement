@@ -369,8 +369,6 @@ class Controller extends ContainerAware
      */
     public function getRenderer($type = 'json')
     {
-        $rendererFactory = new RendererFactory();
-
-        return $rendererFactory->build($type);
+        return $this->get('renderer')->build($type);
     }
 }

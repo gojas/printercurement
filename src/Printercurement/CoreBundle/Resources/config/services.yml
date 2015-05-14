@@ -1,4 +1,4 @@
 services:
-#    core.example:
-#        class: Printercurement\CoreBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    renderer:
+        class: Printercurement\CoreBundle\Factory\RendererFactory
+        arguments: []
