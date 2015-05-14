@@ -27,6 +27,7 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Printercurement\CoreBundle\Factory\RendererFactory;
 
 /**
  * Controller is a simple implementation of a Controller.
@@ -368,17 +369,6 @@ class Controller extends ContainerAware
      */
     public function getRenderer($type = 'json')
     {
-        switch ($type) {
-            case 'json':
-                $renderer = new \Printercurement\CoreBundle\Renderer\Json();
-        break;
-            case 'xml':
-                $renderer = new \Printercurement\CoreBundle\Renderer\Xml();
-        break;
-            default:
-                $renderer = new \Printercurement\CoreBundle\Renderer\Json();
-        }
-
-        return $renderer;
+        return RendererFactory::build($type);
     }
 }
