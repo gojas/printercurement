@@ -4,7 +4,7 @@ namespace Printercurement\CoreBundle\Factory;
 
 class RendererFactory
 {
-    public static function build($type)
+    public function build($type)
     {
         $rendererType = ucwords($type);
 
