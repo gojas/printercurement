@@ -1,23 +1,14 @@
-core_user:
-    resource: "@CoreBundle/Resources/config/routing/user.yml"
-    prefix:   /user
-
-user_show:
-    path:     /user/{id}/show
-    defaults: { _controller: "CoreBundle:User:show" }
-
-new_user:
-    path:     /user/new
-    defaults: { _controller: "CoreBundle:User:new" }
-
-user_create:
-    path:     /user/create
-    defaults: { _controller: "CoreBundle:User:create" }
-    methods:  POST
+core_admin:
+    resource: "@CoreBundle/Resources/config/routing/admin.yml"
+    prefix:   /admin
 
 core_homepage:
     path:     /
     defaults: { _controller: CoreBundle:Index:index }
+
+home:
+    path:     /home
+    defaults: { _controller: CoreBundle:Index:home }
 
 login:
     path:     /login
@@ -29,10 +20,5 @@ login_check:
 logout:
     path:     /logout
 
-admin:
-    path:     /admin
-    defaults: { _controller: CoreBundle:Admin:index }
 
-home:
-    path:     /home
-    defaults: { _controller: CoreBundle:Index:home }
+
