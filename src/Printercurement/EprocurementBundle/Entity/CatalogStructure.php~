@@ -59,7 +59,12 @@ class CatalogStructure
      * @ORM\ManyToOne(targetEntity="Catalog")
      * @ORM\JoinColumn(name="catalog_id", referencedColumnName="id")
      **/
-    private $catalog;
+    protected $catalog;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ArticleNode", mappedBy="catalogNode")
+     **/
+    protected  $articleNodes;
 
     /**
      * Constructor
@@ -225,5 +230,61 @@ class CatalogStructure
     public function getParentNode()
     {
         return $this->parentNode;
+    }
+
+    /**
+     * Set catalog
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\Catalog $catalog
+     * @return CatalogStructure
+     */
+    public function setCatalog(\Printercurement\EprocurementBundle\Entity\Catalog $catalog = null)
+    {
+        $this->catalog = $catalog;
+
+        return $this;
+    }
+
+    /**
+     * Get catalog
+     *
+     * @return \Printercurement\EprocurementBundle\Entity\Catalog 
+     */
+    public function getCatalog()
+    {
+        return $this->catalog;
+    }
+
+    /**
+     * Add articleNodes
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\ArticleNode $articleNodes
+     * @return CatalogStructure
+     */
+    public function addArticleNode(\Printercurement\EprocurementBundle\Entity\ArticleNode $articleNodes)
+    {
+        $this->articleNodes[] = $articleNodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove articleNodes
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\ArticleNode $articleNodes
+     */
+    public function removeArticleNode(\Printercurement\EprocurementBundle\Entity\ArticleNode $articleNodes)
+    {
+        $this->articleNodes->removeElement($articleNodes);
+    }
+
+    /**
+     * Get articleNodes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticleNodes()
+    {
+        return $this->articleNodes;
     }
 }
