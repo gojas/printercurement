@@ -15,7 +15,10 @@
     <tr>
         <td><a href="#eprocurement/catalog/{$ catalog.id $}/{$ catalog.urlName $}"><i class="fa fa-shield"></i>{$ catalog.name $}</a></td>
         <td>{$ catalog.name $}</td>
-        <td>{$ catalog.dtCreated.timestamp * 1000 | date:'yyyy-MM-dd' $}</td>
+
+        <!-- fix serializer -->
+        <!-- <td>{$ catalog.dt_created.timestamp * 1000 | date:'yyyy-MM-dd' $}</td> -->
+        <td>{$ catalog.dt_created.date $}</td>
     </tr>
     </tbody>
 </table>
