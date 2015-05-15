@@ -45,29 +45,6 @@ class Catalog
     }
 
     /**
-     * Set parent_id
-     *
-     * @param integer $parentId
-     * @return Catalog
-     */
-    public function setParentId($parentId)
-    {
-        $this->parent_id = $parentId;
-
-        return $this;
-    }
-
-    /**
-     * Get parent_id
-     *
-     * @return integer
-     */
-    public function getParentId()
-    {
-        return $this->parent_id;
-    }
-
-    /**
      * Set name
      *
      * @param string $name

@@ -13,17 +13,16 @@ class ArticleNode
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $node_id;
 
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
      */
     protected $article_id;
 
     /**
-     * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
     protected $dt_created;
 
