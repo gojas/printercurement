@@ -18,6 +18,7 @@ class ArticleNode
 
     /**
      * @ORM\Column(type="integer")
+     * @ORM\Id
      */
     protected $article_id;
 
