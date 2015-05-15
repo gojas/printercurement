@@ -44,6 +44,23 @@ class CatalogStructure
      */
     private $user_id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CatalogStructure", mappedBy="parentNode")
+     **/
+    protected  $nodes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CatalogStructure", inversedBy="nodes")
+     * @ORM\JoinColumn(name="parent_node_id", referencedColumnName="node_id")
+     **/
+    protected $parentNode;
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->nodes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get node_id
@@ -145,5 +162,61 @@ class CatalogStructure
     public function getUserId()
     {
         return $this->user_id;
+    }
+
+    /**
+     * Add nodes
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\CatalogStructure $nodes
+     * @return CatalogStructure
+     */
+    public function addNode(\Printercurement\EprocurementBundle\Entity\CatalogStructure $nodes)
+    {
+        $this->nodes[] = $nodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove nodes
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\CatalogStructure $nodes
+     */
+    public function removeNode(\Printercurement\EprocurementBundle\Entity\CatalogStructure $nodes)
+    {
+        $this->nodes->removeElement($nodes);
+    }
+
+    /**
+     * Get nodes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getNodes()
+    {
+        return $this->nodes;
+    }
+
+    /**
+     * Set parentNode
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\CatalogStructure $parentNode
+     * @return CatalogStructure
+     */
+    public function setParentNode(\Printercurement\EprocurementBundle\Entity\CatalogStructure $parentNode = null)
+    {
+        $this->parentNode = $parentNode;
+
+        return $this;
+    }
+
+    /**
+     * Get parentNode
+     *
+     * @return \Printercurement\EprocurementBundle\Entity\CatalogStructure 
+     */
+    public function getParentNode()
+    {
+        return $this->parentNode;
     }
 }
