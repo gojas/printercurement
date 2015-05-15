@@ -44,7 +44,14 @@ class CatalogStructure
      */
     protected $user_id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="CatalogStructure", mappedBy="parentNode")
+     **/
+    protected  $nodes;
 
-
-
+    /**
+     * @ORM\ManyToOne(targetEntity="CatalogStructure", inversedBy="nodes")
+     * @ORM\JoinColumn(name="parent_node_id", referencedColumnName="node_id")
+     **/
+    protected $parentNode;
 }
