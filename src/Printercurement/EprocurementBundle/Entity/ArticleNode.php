@@ -27,6 +27,12 @@ class ArticleNode
     protected $dt_created;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Article")
+     * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
+     **/
+    protected $article;
+
+    /**
      * Get node_id
      *
      * @return integer 
@@ -80,5 +86,41 @@ class ArticleNode
     public function getDtCreated()
     {
         return $this->dt_created;
+    }
+
+    /**
+     * Set node_id
+     *
+     * @param integer $nodeId
+     * @return ArticleNode
+     */
+    public function setNodeId($nodeId)
+    {
+        $this->node_id = $nodeId;
+
+        return $this;
+    }
+
+    /**
+     * Set article
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\Article $article
+     * @return ArticleNode
+     */
+    public function setArticle(\Printercurement\EprocurementBundle\Entity\Article $article = null)
+    {
+        $this->article = $article;
+
+        return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \Printercurement\EprocurementBundle\Entity\Article 
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }
