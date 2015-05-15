@@ -18,11 +18,6 @@ class Catalog
     protected $id;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    protected $parent_id;
-
-    /**
      * @ORM\Column(type="string", length=45)
      */
     protected $name;
