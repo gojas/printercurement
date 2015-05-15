@@ -35,6 +35,11 @@ class Catalog
     protected $url_name;
 
     /**
+     * @ORM\OneToMany(targetEntity="CatalogStructure", mappedBy="catalog")
+     **/
+    protected $catalogStructures;
+
+    /**
      * Get id
      *
      * @return integer
@@ -42,29 +47,6 @@ class Catalog
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set parent_id
-     *
-     * @param integer $parentId
-     * @return Catalog
-     */
-    public function setParentId($parentId)
-    {
-        $this->parent_id = $parentId;
-
-        return $this;
-    }
-
-    /**
-     * Get parent_id
-     *
-     * @return integer
-     */
-    public function getParentId()
-    {
-        return $this->parent_id;
     }
 
     /**
@@ -153,5 +135,46 @@ class Catalog
     private function createUrlName()
     {
         return preg_replace("/[^A-Za-z0-9s+]/", '-', $this->name);
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->catalogStructures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add catalogStructures
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogStructures
+     * @return Catalog
+     */
+    public function addCatalogStructure(\Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogStructures)
+    {
+        $this->catalogStructures[] = $catalogStructures;
+
+        return $this;
+    }
+
+    /**
+     * Remove catalogStructures
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogStructures
+     */
+    public function removeCatalogStructure(\Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogStructures)
+    {
+        $this->catalogStructures->removeElement($catalogStructures);
+    }
+
+    /**
+     * Get catalogStructures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCatalogStructures()
+    {
+        return $this->catalogStructures;
     }
 }

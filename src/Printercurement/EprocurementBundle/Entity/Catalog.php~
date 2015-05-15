@@ -5,35 +5,44 @@ namespace Printercurement\EprocurementBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Catalog
+ * @ORM\Entity
+ * @ORM\Table(name="catalog")
  */
 class Catalog
 {
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @var string
+     * @ORM\Column(type="string", length=45)
      */
-    private $name;
+    protected $name;
 
     /**
-     * @var integer
+     * @ORM\Column(type="integer")
      */
-    private $createdBy;
+    protected $created_by;
 
     /**
-     * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
-    private $dtCreated;
+    protected $dt_created;
 
+    protected $url_name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CatalogStructure", mappedBy="catalog")
+     **/
+    protected $catalogStructures;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -56,7 +65,7 @@ class Catalog
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -64,48 +73,68 @@ class Catalog
     }
 
     /**
-     * Set createdBy
+     * Set created_by
      *
      * @param integer $createdBy
      * @return Catalog
      */
     public function setCreatedBy($createdBy)
     {
-        $this->createdBy = $createdBy;
+        $this->created_by = $createdBy;
 
         return $this;
     }
 
     /**
-     * Get createdBy
+     * Get created_by
      *
-     * @return integer 
+     * @return integer
      */
     public function getCreatedBy()
     {
-        return $this->createdBy;
+        return $this->created_by;
     }
 
     /**
-     * Set dtCreated
+     * Set dt_created
      *
      * @param \DateTime $dtCreated
      * @return Catalog
      */
     public function setDtCreated($dtCreated)
     {
-        $this->dtCreated = $dtCreated;
+        $this->dt_created = $dtCreated;
 
         return $this;
     }
 
     /**
-     * Get dtCreated
+     * Get dt_created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDtCreated()
     {
-        return $this->dtCreated;
+        return $this->dt_created;
     }
+
+
+
+    /**
+     * Get url name
+     *
+     * @return string
+     */
+    public function getUrlName()
+    {
+        $url_name = $this->createUrlName();
+
+        return $url_name;
+    }
+
+    private function createUrlName()
+    {
+        return preg_replace("/[^A-Za-z0-9s+]/", '-', $this->name);
+    }
+    
 }

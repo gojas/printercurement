@@ -54,6 +54,13 @@ class CatalogStructure
      * @ORM\JoinColumn(name="parent_node_id", referencedColumnName="node_id")
      **/
     protected $parentNode;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Catalog")
+     * @ORM\JoinColumn(name="catalog_id", referencedColumnName="id")
+     **/
+    protected $catalog;
+
     /**
      * Constructor
      */
@@ -218,5 +225,28 @@ class CatalogStructure
     public function getParentNode()
     {
         return $this->parentNode;
+    }
+
+    /**
+     * Set catalog
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\Catalog $catalog
+     * @return CatalogStructure
+     */
+    public function setCatalog(\Printercurement\EprocurementBundle\Entity\Catalog $catalog = null)
+    {
+        $this->catalog = $catalog;
+
+        return $this;
+    }
+
+    /**
+     * Get catalog
+     *
+     * @return \Printercurement\EprocurementBundle\Entity\Catalog 
+     */
+    public function getCatalog()
+    {
+        return $this->catalog;
     }
 }
