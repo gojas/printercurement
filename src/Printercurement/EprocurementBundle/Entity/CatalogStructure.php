@@ -63,6 +63,11 @@ class CatalogStructure extends AbstractEntity
     protected $catalog;
 
     /**
+     * @ORM\OneToMany(targetEntity="ArticleNode", mappedBy="catalogNode")
+     **/
+    protected  $articleNodes;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -249,5 +254,38 @@ class CatalogStructure extends AbstractEntity
     public function getCatalog()
     {
         return $this->catalog;
+    }
+
+    /**
+     * Add articleNodes
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\ArticleNode $articleNodes
+     * @return CatalogStructure
+     */
+    public function addArticleNode(\Printercurement\EprocurementBundle\Entity\ArticleNode $articleNodes)
+    {
+        $this->articleNodes[] = $articleNodes;
+
+        return $this;
+    }
+
+    /**
+     * Remove articleNodes
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\ArticleNode $articleNodes
+     */
+    public function removeArticleNode(\Printercurement\EprocurementBundle\Entity\ArticleNode $articleNodes)
+    {
+        $this->articleNodes->removeElement($articleNodes);
+    }
+
+    /**
+     * Get articleNodes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticleNodes()
+    {
+        return $this->articleNodes;
     }
 }

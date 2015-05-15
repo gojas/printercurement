@@ -34,6 +34,12 @@ class ArticleNode
     protected $article;
 
     /**
+     * @ORM\ManyToOne(targetEntity="CatalogStructure")
+     * @ORM\JoinColumn(name="node_id", referencedColumnName="node_id")
+     **/
+    protected $catalogNode;
+
+    /**
      * Get node_id
      *
      * @return integer 

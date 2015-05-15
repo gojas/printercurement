@@ -35,6 +35,12 @@ class ArticleNode extends AbstractEntity
     protected $article;
 
     /**
+     * @ORM\ManyToOne(targetEntity="CatalogStructure")
+     * @ORM\JoinColumn(name="node_id", referencedColumnName="node_id")
+     **/
+    protected $catalogNode;
+
+    /**
      * Get node_id
      *
      * @return integer 
@@ -124,5 +130,28 @@ class ArticleNode extends AbstractEntity
     public function getArticle()
     {
         return $this->article;
+    }
+
+    /**
+     * Set catalogNode
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogNode
+     * @return ArticleNode
+     */
+    public function setCatalogNode(\Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogNode = null)
+    {
+        $this->catalogNode = $catalogNode;
+
+        return $this;
+    }
+
+    /**
+     * Get catalogNode
+     *
+     * @return \Printercurement\EprocurementBundle\Entity\CatalogStructure 
+     */
+    public function getCatalogNode()
+    {
+        return $this->catalogNode;
     }
 }
