@@ -1,0 +1,22 @@
+Printercurement\EprocurementBundle\Entity\Article:
+    type: entity
+    table: article
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '45'
+        description:
+            type: text
+        created_by:
+            type: integer
+            column: created_by
+        dt_created:
+            type: datetime
+            column: dt_created
+    lifecycleCallbacks: {  }

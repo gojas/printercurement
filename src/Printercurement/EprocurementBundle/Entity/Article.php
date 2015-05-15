@@ -40,7 +40,7 @@ class Article
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -63,7 +63,7 @@ class Article
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -86,7 +86,7 @@ class Article
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -109,7 +109,7 @@ class Article
     /**
      * Get created_by
      *
-     * @return integer 
+     * @return integer
      */
     public function getCreatedBy()
     {
@@ -132,7 +132,7 @@ class Article
     /**
      * Get dt_created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDtCreated()
     {

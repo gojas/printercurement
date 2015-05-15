@@ -5,9 +5,9 @@ namespace Printercurement\EprocurementBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Article
+ * Catalog
  */
-class Article
+class Catalog
 {
     /**
      * @var integer
@@ -18,11 +18,6 @@ class Article
      * @var string
      */
     private $name;
-
-    /**
-     * @var string
-     */
-    private $description;
 
     /**
      * @var integer
@@ -49,7 +44,7 @@ class Article
      * Set name
      *
      * @param string $name
-     * @return Article
+     * @return Catalog
      */
     public function setName($name)
     {
@@ -69,33 +64,10 @@ class Article
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     * @return Article
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
      * Set createdBy
      *
      * @param integer $createdBy
-     * @return Article
+     * @return Catalog
      */
     public function setCreatedBy($createdBy)
     {
@@ -118,7 +90,7 @@ class Article
      * Set dtCreated
      *
      * @param \DateTime $dtCreated
-     * @return Article
+     * @return Catalog
      */
     public function setDtCreated($dtCreated)
     {
