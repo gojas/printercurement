@@ -3,12 +3,13 @@
 namespace Printercurement\EprocurementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Printercurement\CoreBundle\Entity\AbstractEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="article_node")
  */
-class ArticleNode
+class ArticleNode extends AbstractEntity
 {
     /**
      * @ORM\Column(type="integer")
@@ -28,7 +29,7 @@ class ArticleNode
     protected $dt_created;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Article")
+     * @ORM\ManyToOne(targetEntity="Article", fetch="EAGER")
      * @ORM\JoinColumn(name="article_id", referencedColumnName="id")
      **/
     protected $article;

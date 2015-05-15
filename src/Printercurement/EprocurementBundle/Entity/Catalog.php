@@ -3,13 +3,13 @@
 namespace Printercurement\EprocurementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JsonSerializable;
+use Printercurement\CoreBundle\Entity\AbstractEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="catalog")
  */
-class Catalog implements JsonSerializable
+class Catalog extends AbstractEntity
 {
     /**
      * @ORM\Column(type="integer")
@@ -177,18 +177,5 @@ class Catalog implements JsonSerializable
     public function getCatalogStructures()
     {
         return $this->catalogStructures;
-    }
-
-    public function jsonSerialize()
-    {
-        $properties = get_object_vars($this);
-
-        $toSerialize = array();
-
-        foreach($properties as $key => $val){
-            $toSerialize[$key] = $val;
-        }
-
-        return $toSerialize;
     }
 }

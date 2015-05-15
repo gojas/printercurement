@@ -3,12 +3,13 @@
 namespace Printercurement\EprocurementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Printercurement\CoreBundle\Entity\AbstractEntity;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="article")
  */
-class Article
+class Article extends AbstractEntity
 {
     /**
      * @ORM\Column(type="integer")

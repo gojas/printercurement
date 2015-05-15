@@ -3,13 +3,14 @@
 namespace Printercurement\EprocurementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Printercurement\CoreBundle\Entity\AbstractEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="catalog_structure")
  */
-class CatalogStructure
+class CatalogStructure extends AbstractEntity
 {
     /**
      * @ORM\Column(type="integer")
