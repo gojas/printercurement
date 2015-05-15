@@ -16,36 +16,33 @@ class CatalogStructure
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected $node_id;
+    private $node_id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    protected $parent_node_id;
+    private $parent_node_id;
 
     /**
      * @ORM\Column(type="integer")
      *
      * @Assert\NotBlank()
      */
-    protected $catalog_id;
+    private $catalog_id;
 
     /**
      * @ORM\Column(type="integer")
      *
      * @Assert\NotBlank()
      */
-    protected $company_id;
+    private $company_id;
 
     /**
      * @ORM\Column(type="integer")
      *
      * @Assert\NotBlank()
      */
-    protected $user_id;
-
-
-
+    private $user_id;
 
 
     /**
