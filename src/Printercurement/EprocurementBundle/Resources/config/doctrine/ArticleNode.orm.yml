@@ -1,0 +1,17 @@
+Printercurement\EprocurementBundle\Entity\ArticleNode:
+    type: entity
+    table: article_node
+    id:
+        node_id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        article_id:
+            type: integer
+            column: article_id
+        dt_created:
+            type: datetime
+            column: dt_created
+    lifecycleCallbacks: {  }

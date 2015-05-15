@@ -1,0 +1,29 @@
+<?php
+
+namespace Printercurement\EprocurementBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="article_node")
+ */
+class ArticleNode
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $node_id;
+
+    /**
+     * @var integer
+     */
+    protected $article_id;
+
+    /**
+     * @var \DateTime
+     */
+    protected $dt_created;
+}
