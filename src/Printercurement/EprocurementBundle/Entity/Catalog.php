@@ -3,12 +3,13 @@
 namespace Printercurement\EprocurementBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="catalog")
  */
-class Catalog
+class Catalog implements JsonSerializable
 {
     /**
      * @ORM\Column(type="integer")
@@ -33,6 +34,11 @@ class Catalog
     protected $dt_created;
 
     protected $url_name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CatalogStructure", mappedBy="catalog")
+     **/
+    protected $catalogStructures;
 
     /**
      * Get id
@@ -130,5 +136,59 @@ class Catalog
     private function createUrlName()
     {
         return preg_replace("/[^A-Za-z0-9s+]/", '-', $this->name);
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->catalogStructures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add catalogStructures
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogStructures
+     * @return Catalog
+     */
+    public function addCatalogStructure(\Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogStructures)
+    {
+        $this->catalogStructures[] = $catalogStructures;
+
+        return $this;
+    }
+
+    /**
+     * Remove catalogStructures
+     *
+     * @param \Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogStructures
+     */
+    public function removeCatalogStructure(\Printercurement\EprocurementBundle\Entity\CatalogStructure $catalogStructures)
+    {
+        $this->catalogStructures->removeElement($catalogStructures);
+    }
+
+    /**
+     * Get catalogStructures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCatalogStructures()
+    {
+        return $this->catalogStructures;
+    }
+
+    public function jsonSerialize()
+    {
+        $properties = get_object_vars($this);
+
+        $toSerialize = array();
+
+        foreach($properties as $key => $val){
+            $toSerialize[$key] = $val;
+        }
+
+        return $toSerialize;
     }
 }
