@@ -1,4 +1,4 @@
-eprocurementApp.controller('EprocurementMain', ['$scope', 'Cart', 'Highchart', 'CatalogService', function EprocurementMain($scope, Cart, Highchart, CatalogService) {
+eprocurementApp.controller('EprocurementMain', ['$scope', 'Cart', 'Highchart', function EprocurementMain($scope, Cart, Highchart) {
     var eprocurement = this;
 
     $scope.firstName = "John";

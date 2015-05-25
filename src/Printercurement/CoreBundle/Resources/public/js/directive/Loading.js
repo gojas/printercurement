@@ -4,6 +4,8 @@ indexApp.directive('loading',   ['$http' ,function ($http)
         restrict: 'A',
         link: function (scope, elm, attrs)
         {
+            scope.mainContainer = $('#main-container');
+
             scope.isLoading = function () {
                 return $http.pendingRequests.length > 0;
             };
@@ -13,7 +15,7 @@ indexApp.directive('loading',   ['$http' ,function ($http)
                 if(v){
                     elm.show();
                 }else{
-                    elm.hide();
+                    elm.hide('fold');
                 }
             });
         }
