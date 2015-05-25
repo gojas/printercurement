@@ -33,6 +33,9 @@ class Catalog extends AbstractEntity
      */
     protected $dt_created;
 
+    /**
+     * @var
+     */
     protected $url_name;
 
     /**
@@ -119,7 +122,18 @@ class Catalog extends AbstractEntity
         return $this->dt_created;
     }
 
+    /**
+     * Set url_name
+     *
+     * @param string $urlName
+     * @return string
+     */
+    public function setUrlName($urlName)
+    {
+        $this->url_name = $this->createUrlName($urlName);
 
+        return $this;
+    }
 
     /**
      * Get url name

@@ -36,12 +36,18 @@ class CatalogController extends Controller
             ->render();
     }
 
+    public function catalogAction(){
+        return $this->render('EprocurementBundle:Catalog:catalog.html.twig');
+    }
+
     public function getCatalogAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
         $catalog = $em->getRepository('EprocurementBundle:Catalog')->find($id);
 
-        return $this->render('EprocurementBundle:Catalog:catalog.html.twig', array('catalog' => $catalog));
+        return $this->getRenderer()
+            ->assign('catalog', $catalog)
+            ->render();
     }
 }

@@ -12,7 +12,7 @@ eprocurementApp.config(function($interpolateProvider, $routeProvider) {
             controller  : 'Catalogs'
         })
         .when('/eprocurement/catalog/:id/:urlName', {
-            templateUrl : function(params){ return '/eprocurement/catalog/'+params.id+'/'+params.urlName},
+            templateUrl : function(params){ return '/eprocurement/catalog/'+params.id+'/createUrlNameGenerator'},
             controller  : 'Catalog'
         })
         .when('/eprocurement/catalog/create', {

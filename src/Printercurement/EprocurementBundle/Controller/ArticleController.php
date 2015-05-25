@@ -48,7 +48,6 @@ class ArticleController extends Controller
 
         $article = $em->getRepository('EprocurementBundle:Article')->find($id);
 
-
         return $this->render('EprocurementBundle:Article:article.html.twig', array('article' => $article));
     }
 }

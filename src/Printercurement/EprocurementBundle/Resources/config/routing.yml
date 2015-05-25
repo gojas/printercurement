@@ -13,6 +13,10 @@ eprocurement_catalogs_get:
 
 eprocurement_catalog:
     path: /eprocurement/catalog/{id}/{urlName}
+    defaults: { _controller: EprocurementBundle:Catalog:catalog }
+
+eprocurement_catalog_get:
+    path: /eprocurement/catalog/get/{id}/{urlName}
     defaults: { _controller: EprocurementBundle:Catalog:getCatalog }
 
 eprocurement_catalog_create:
