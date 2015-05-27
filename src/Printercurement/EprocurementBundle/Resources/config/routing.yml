@@ -11,6 +11,15 @@ eprocurement_catalogs_get:
     defaults: { _controller: EprocurementBundle:Catalog:getCatalogs }
     requirements: { _format: json }
 
+eprocurement_catalogs_structure:
+    path: /eprocurement/catalogs_structure
+    defaults: { _controller: EprocurementBundle:CatalogStructure:index }
+
+eprocurement_catalogs_structure_get:
+    path: /eprocurement/catalogs_structure/get/{nodeId}
+    defaults: { _controller: EprocurementBundle:CatalogStructure:getCatalogsStructure }
+    requirements: { _format: json }
+
 eprocurement_catalog:
     path: /eprocurement/catalog/{id}/{urlName}
     defaults: { _controller: EprocurementBundle:Catalog:catalog }

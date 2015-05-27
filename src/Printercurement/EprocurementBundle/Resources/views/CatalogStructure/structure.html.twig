@@ -1,0 +1,15 @@
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Catalog Name</th>
+        <th>Node #</th>
+    </tr>
+    </thead>
+
+    <tbody ng-repeat="structure in catalogsStructure">
+    <tr>
+        <td>{$ structure.catalog.name $}</td>
+        <td><a href="##eprocurement/catalog/{$ structure.catalog.id $}/createUrlNameGenerator"><i class="fa fa-shield"></i>{$ structure.node_id $}</a></td>
+    </tr>
+    </tbody>
+</table>

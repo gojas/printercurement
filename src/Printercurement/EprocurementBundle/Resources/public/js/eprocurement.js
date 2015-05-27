@@ -19,5 +19,9 @@ eprocurementApp.config(function($interpolateProvider, $routeProvider) {
             templateUrl : '/eprocurement/catalog/create',
             controller  : 'Catalog'
         })
+        .when('/eprocurement/catalogs_structure', {
+            templateUrl : '/eprocurement/catalogs_structure',
+            controller  : 'CatalogStructure'
+        })
         .otherwise('')
 });

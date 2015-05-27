@@ -36,6 +36,16 @@ class CatalogController extends Controller
             ->render();
     }
 
+    public function getCatalogsStructureAction($nodeId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $catalogsStructure = $em->getRepository('EprocurementBundle:CatalogStructure')->findAll();
+
+        return $this->getRenderer()
+            ->assign('catalogsStructure', $catalogsStructure)
+            ->render();
+    }
+
     public function catalogAction(){
         return $this->render('EprocurementBundle:Catalog:catalog.html.twig');
     }
