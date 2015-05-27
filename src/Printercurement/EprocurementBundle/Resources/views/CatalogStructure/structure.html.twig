@@ -1,3 +1,4 @@
+<div data-loading style="width:100%; height: 5px; background-color: #D23F3F"></div>
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -6,10 +7,79 @@
     </tr>
     </thead>
 
-    <tbody ng-repeat="structure in catalogsStructure">
+    <tbody ng-repeat="(key, structure) in catalogsStructure">
     <tr>
         <td>{$ structure.catalog.name $}</td>
         <td><a href="##eprocurement/catalog/{$ structure.catalog.id $}/createUrlNameGenerator"><i class="fa fa-shield"></i>{$ structure.node_id $}</a></td>
+
+        <td ng-repeat="childNode in structure.child_nodes">
+
+            {$ childNode.catalog.name $}
+        </td>
     </tr>
     </tbody>
 </table>
+
+<style>
+    .nav-list{padding-right:15px;padding-left:15px;margin-bottom:0;}
+    .nav-list-main{padding-left:0px;padding-right:0px;margin-bottom:0;}
+    span.nav-toggle-icon{font-size:7px !important;top:-2px !important;color:#888 !important;}
+</style>
+
+<div class="container">
+    <div class="col-md-12"><h2>Bootstrap 3 Left Multilevel Menu (Treeview)</h2></div>
+    <div class="col-md-3">
+
+        <ul class="nav nav-list-main">
+            <li><label class="nav-toggle nav-header"><span class="nav-toggle-icon glyphicon glyphicon-chevron-right"></span> <a href="http://www.google.com/">Header 1</a></label>
+                <ul class="nav nav-list nav-left-ml">
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><label class="nav-toggle nav-header"><span class="nav-toggle-icon glyphicon glyphicon-chevron-right"></span> <a href="http://www.google.com/">Header 1.1</a></label>
+                        <ul class="nav nav-list nav-left-ml">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><label class="nav-toggle nav-header"><span class="nav-toggle-icon glyphicon glyphicon-chevron-right"></span> <a href="http://www.google.com/">Header 1.1.1</a></label>
+                                <ul class="nav nav-list nav-left-ml">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-divider"></li>
+            <li><label class="nav-toggle nav-header"><span>Header 2</span></label>
+                <ul class="nav nav-list nav-left-ml">
+                    <li><a href="#">Link</a></li>
+                    <li><a href="#">Link</a></li>
+                    <li><label class="nav-toggle nav-header"><span>Header 2.1</span></label>
+                        <ul class="nav nav-list nav-left-ml">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><label class="nav-toggle nav-header"><span>Header 2.1.1</span></label>
+                                <ul class="nav nav-list nav-left-ml">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><label class="nav-toggle nav-header"><span>Header 2.2</span></label>
+                        <ul class="nav nav-list nav-left-ml">
+                            <li><a href="#">Link</a></li>
+                            <li><a href="#">Link</a></li>
+                            <li><label class="nav-toggle nav-header"><span>Header 2.2.1</span></label>
+                                <ul class="nav nav-list nav-left-ml">
+                                    <li><a href="#">Link</a></li>
+                                    <li><a href="#">Link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
