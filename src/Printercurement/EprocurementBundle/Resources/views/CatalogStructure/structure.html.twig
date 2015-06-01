@@ -1,25 +1,3 @@
-<div data-loading style="width:100%; height: 5px; background-color: #D23F3F"></div>
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th>Catalog Name</th>
-        <th>Node #</th>
-    </tr>
-    </thead>
-
-    <tbody ng-repeat="(key, structure) in catalogsStructure">
-    <tr>
-        <td>{$ structure.catalog.name $}</td>
-        <td><a href="##eprocurement/catalog/{$ structure.catalog.id $}/createUrlNameGenerator"><i class="fa fa-shield"></i>{$ structure.node_id $}</a></td>
-
-        <td ng-repeat="childNode in structure.child_nodes">
-
-            {$ childNode.catalog.name $}
-        </td>
-    </tr>
-    </tbody>
-</table>
-
 <style>
     .nav-list{padding-right:15px;padding-left:15px;margin-bottom:0;}
     .nav-list-main{padding-left:0px;padding-right:0px;margin-bottom:0;}
@@ -29,53 +7,25 @@
 <div class="container">
     <div class="col-md-12"><h2>Bootstrap 3 Left Multilevel Menu (Treeview)</h2></div>
     <div class="col-md-3">
-
-        <ul class="nav nav-list-main">
-            <li><label class="nav-toggle nav-header"><span class="nav-toggle-icon glyphicon glyphicon-chevron-right"></span> <a href="http://www.google.com/">Header 1</a></label>
-                <ul class="nav nav-list nav-left-ml">
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><label class="nav-toggle nav-header"><span class="nav-toggle-icon glyphicon glyphicon-chevron-right"></span> <a href="http://www.google.com/">Header 1.1</a></label>
-                        <ul class="nav nav-list nav-left-ml">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="nav-toggle nav-header"><span class="nav-toggle-icon glyphicon glyphicon-chevron-right"></span> <a href="http://www.google.com/">Header 1.1.1</a></label>
-                                <ul class="nav nav-list nav-left-ml">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                </ul>
+        <ul class="nav nav-list-main" ng-repeat="(key, node) in structure" >
+            <li>
+                <label class="nav-toggle nav-header">
+                    <span id="tree_node_{$ node.node_id $}" ng-click="setSelectedNode(node)">{$ node.catalog.name $}</span>
+                </label>
+                <ul class="nav nav-list nav-left-ml" ng-repeat="childNode in node.child_nodes">
+                    <li>
+                        <label class="nav-toggle">
+                            <span id="tree_node_{$ childNode.node_id $}" ng-click="setSelectedNode(childNode)">{$ childNode.catalog.name $}</span>
+                        </label>
+                        <ul class="nav nav-list nav-left-ml" style="display: none;">
+                        <!--
+                            remote stuff, looks like this when added
+                            <li>
+                                <label class="nav-toggle">
+                                    <span id="tree_node_{$ childNode.node_id $}" ng-click="setSelectedNode(childNode)">{$ childNode.catalog.name $}</span>
+                                </label>
                             </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-divider"></li>
-            <li><label class="nav-toggle nav-header"><span>Header 2</span></label>
-                <ul class="nav nav-list nav-left-ml">
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><label class="nav-toggle nav-header"><span>Header 2.1</span></label>
-                        <ul class="nav nav-list nav-left-ml">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="nav-toggle nav-header"><span>Header 2.1.1</span></label>
-                                <ul class="nav nav-list nav-left-ml">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><label class="nav-toggle nav-header"><span>Header 2.2</span></label>
-                        <ul class="nav nav-list nav-left-ml">
-                            <li><a href="#">Link</a></li>
-                            <li><a href="#">Link</a></li>
-                            <li><label class="nav-toggle nav-header"><span>Header 2.2.1</span></label>
-                                <ul class="nav nav-list nav-left-ml">
-                                    <li><a href="#">Link</a></li>
-                                    <li><a href="#">Link</a></li>
-                                </ul>
-                            </li>
+                         -->
                         </ul>
                     </li>
                 </ul>
